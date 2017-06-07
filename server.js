@@ -31,7 +31,7 @@ function getTimestampJSON(timestamp){
 }
 
 function getNaturalDate(date){
-    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Obtober', 'November', 'December'];
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     
     console.log(months[date.getMonth()]);
     
