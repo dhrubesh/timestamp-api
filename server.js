@@ -22,14 +22,24 @@ function getTimestampJSON(timestamp){
     }
     if(!isNaN(date.getTime())){
         console.log(date.getTime())
+        
         result.unix = date.getTime()
-        result.natural  = null;
+        
+        result.natural  = getNaturalDate(date);
     }
     return result;
 }
 
+function getNaturalDate(date){
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Obtober', 'November', 'December'];
+    
+    console.log(months[date.getMonth()]);
+    
+	return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+}
+
 app.get('/', function (req, res) {
-  res.send('Hello World!')
+  res.send('Use a timestamp or natural date as path parameter to get the timestamp object e.g.: /October%201,%202016 or /1477473583462')
 })
 
 app.listen(8080, function () {
