@@ -1,26 +1,27 @@
 const express = require('express')
 const app = express()
-var PORT = process.env.PORT || 8080;
 
-app.get('/:timestamp', function (req, res) {
-    var timestamp = req.param.timestamp;
-    res.json(getTimestampJSON(timestamp))
-//   res.send('Timestamp: '+timestamp)
-})
+app.get('/:timestamp', function(request, response) {
+	var timestamp = request.params.timestamp;
+	response.json(getTimestampJSON(timestamp));
+});
 
 function getTimestampJSON(timestamp){
     
-    var results={
-        unix:null;
-        natural:null;
+    var result={
+        unix:null,
+        natural:null
     }
     var date;
-    if(!isNAN(parseInt(timestamp))){
+    if(!isNaN(parseInt(timestamp))){
         date = new Date(parseInt(timestamp))
+        console.log("date: "+ date)
     }else{
         date= new Date(timestamp)
+        console.log("date2: "+date)
     }
     if(!isNaN(date.getTime())){
+        console.log(date.getTime())
         result.unix = date.getTime()
         result.natural  = null;
     }
